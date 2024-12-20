@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
+import { SheetDataProvider } from "@/context/SheetDataContext";
+import AosInit from "@/components/layout/AosInit";
 
 const openSans = Open_Sans({
   subsets: ["latin"],
@@ -20,8 +22,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${openSans.className} antialiased`}>
-        <Header />
-        {children}
+        <SheetDataProvider>
+          <AosInit />
+          <Header />
+          {children}
+        </SheetDataProvider>
       </body>
     </html>
   );
