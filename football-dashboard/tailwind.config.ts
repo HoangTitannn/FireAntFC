@@ -8,9 +8,14 @@ export default {
   ],
   theme: {
     extend: {
+      
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        primary: {
+          DEFAULT: "#0EA5E9",
+          foreground: "hsl(var(--primary-foreground))",
+        },
         woodsmoke: {
           "50": "#f5f5f6",
           "100": "#e5e5e8",

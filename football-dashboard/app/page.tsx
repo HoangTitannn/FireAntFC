@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useSheetData } from "@/context/SheetDataContext";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import AOS from "aos";
@@ -11,15 +11,9 @@ interface SheetDataItem {
 }
 
 export default function Home() {
-  const { mainSheetData, loading, error, fetchAllSheetData } = useSheetData();
-  const dataFetchedRef = useRef(false);
+  const { mainSheetData, loading, error } = useSheetData();
 
   useEffect(() => {
-    if (!dataFetchedRef.current) {
-      fetchAllSheetData();
-      dataFetchedRef.current = true;
-    }
-
     AOS.init({
       duration: 800,
       once: false,
@@ -31,7 +25,7 @@ export default function Home() {
     });
 
     AOS.refresh();
-  }, [fetchAllSheetData]);
+  }, []);
 
   if (loading)
     return (
@@ -60,7 +54,7 @@ export default function Home() {
           <div className="min-w-full">
             <table className="w-full border-collapse">
               <thead>
-                <tr className="bg-primary text-primary-foreground text-woodsmoke-600">
+                <tr className=" text-woodsmoke-600">
                   <th className="p-2 text-center font-medium">Thứ hạng</th>
                   <th className="p-2 text-left font-medium">Tên</th>
                   <th className="p-2 text-center font-medium">Bàn thắng</th>
@@ -89,7 +83,7 @@ export default function Home() {
                       }`}>
                       <td className="p-2 border-t text-center">
                         {index < 3 ? (
-                          <span className="inline-block w-6 h-6 rounded-full bg-primary text-primary-foreground text-center leading-6">
+                          <span className="inline-block w-6 h-6 rounded-full text-center leading-6">
                             {index + 1}
                           </span>
                         ) : (
