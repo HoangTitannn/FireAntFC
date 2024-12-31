@@ -9,7 +9,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { CheckCircle, XCircle, MinusCircle } from "lucide-react";
+import { CheckCircle, XCircle, MinusCircle, Wallet } from "lucide-react";
+import CounterUp from "@/components/ui/counterUp";
 
 interface SheetDataItem {
   [key: string]: string | number | boolean;
@@ -74,8 +75,89 @@ export default function FundPage() {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div className="flex flex-col gap-10 justify-center items-center mt-10 p-2 sm:p-6">
-      <Card className="overflow-hidden w-[1000px] h-[600px]">
+    <div className="flex flex-col gap-10 items-center mt-10 p-2 sm:p-6 text-[#1F1F41]">
+      <div className="flex gap-10">
+        <Card className="p-6 h-fit">
+          <CardHeader className="p-0">
+            <CardTitle className="text-2xl font-bold">
+              FireAnt Football Club
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="flex py-6 px-0 gap-4">
+            <Card className="p-4 bg-[#F6F6FF] flex flex-col gap-3">
+              <CardTitle className="">Tổng quỹ</CardTitle>
+              <CardContent className="flex items-center gap-2">
+                <Wallet className="text-[#FBBF24] w-7 h-7" />
+                <p className="text-2xl font-bold"></p>
+                <p>
+                  <CounterUp
+                    end={25000000}
+                    className="text-[32px] leading-10 font-bold text-[#1F1F41]"
+                  />
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="p-4 bg-[#F6F6FF] flex flex-col gap-3">
+              <CardTitle>Tổng quỹ</CardTitle>
+              <CardContent className="flex items-center gap-2">
+                <Wallet className="text-[#FBBF24] w-7 h-7" />
+                <p className="text-2xl font-bold"></p>
+                <p>
+                  <CounterUp
+                    end={5000000}
+                    className="text-[32px] leading-10 font-bold text-[#1F1F41]"
+                  />
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="p-4 bg-[#F6F6FF] flex flex-col gap-3">
+              <CardTitle className="">Tổng quỹ</CardTitle>
+              <CardContent className="flex items-center gap-2">
+                <Wallet className="text-[#FBBF24] w-7 h-7" />
+                <p className="text-2xl font-bold"></p>
+                <p>
+                  <CounterUp
+                    end={5000000}
+                    className="text-[32px] leading-10 font-bold "
+                  />
+                </p>
+              </CardContent>
+            </Card>
+          </CardContent>
+        </Card>
+
+        <Card className="">
+          <CardHeader>
+            <CardTitle className="text-2xl font-bold">
+              Nội dung chi từ 7-2024
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="overflow-x-auto">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Ngày</TableHead>
+                    <TableHead>Nội dung chi</TableHead>
+                    <TableHead>Số tiền</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {table2.map((row: SheetDataItem, index: number) => (
+                    <TableRow key={index}>
+                      <TableCell>{row.Date}</TableCell>
+                      <TableCell>{row.Description}</TableCell>
+                      <TableCell>{row.Total}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      <Card className="overflow-x-auto xl:w-[1000px] scrollbar-hide">
         <CardHeader className="bg-primary text-primary-foreground">
           <CardTitle className="text-2xl font-bold text-center">
             Quỹ đội
@@ -128,34 +210,6 @@ export default function FundPage() {
                         </TableCell>
                       );
                     })}
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Additional Columns</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="overflow-x-auto">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Ngày</TableHead>
-                  <TableHead>Nội dung chi</TableHead>
-                  <TableHead>Số tiền</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {table2.map((row: SheetDataItem, index: number) => (
-                  <TableRow key={index}>
-                    <TableCell>{row.Date}</TableCell>
-                    <TableCell>{row.Description}</TableCell>
-                    <TableCell>{row.Total}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>

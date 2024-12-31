@@ -48,7 +48,7 @@ export default function Home() {
       />
       <Card className="w-full max-w-3xl h-[500px] overflow-y-auto scrollbar-hide">
         <CardHeader>
-          <CardTitle className="font-bold">Thống kê mùa giải 2025</CardTitle>
+          <CardTitle className="font-bold text-[#1F1F41]">Thống kê mùa giải 2025</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="min-w-full">

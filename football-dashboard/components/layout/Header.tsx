@@ -7,7 +7,7 @@ import Logo from "@/components/layout/logo";
 
 const Header = () => {
   return (
-    <header className="sticky top-0 bg-transparent transition-all duration-300 backdrop-blur-md z-50 shadow-md">
+    <header className="sticky top-0 bg-transparent transition-all duration-300 backdrop-blur-md z-50 shadow-md text-[#1F1F41]">
       <div className="max-w-[1200px] mx-auto p-6 flex items-center justify-between">
         <div className="flex items-center">
           <Link href="/" aria-label="Trang chủ" data-aos="fade-left"  data-aos-duration="1200" data-aos-easing="ease-out-back">
