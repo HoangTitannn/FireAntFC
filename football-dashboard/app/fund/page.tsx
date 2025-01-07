@@ -82,18 +82,15 @@ export default function FundPage() {
     const value = getValue(label, month);
     return value ? parseFloat(value) : 0;
   };
-  
+
   // Retrieve and convert values
   const previousFund = getNumericValue("Quỹ đội dự tính đến hết T6/2024", month);
   const totalFundIncome = getNumericValue("Tổng thu quỹ + thu đối", month);
   const totalExpense = getNumericValue("Tổng chi", month);
   const remainingBalance = getNumericValue("Còn lại", month);
-  
+
   // Calculate total fund
   const totalFund = previousFund + totalFundIncome;
-  
-  // Log results
-  console.log("Tổng thu quỹ + thu đối:", totalFund);
 
 
   if (loading)
@@ -124,9 +121,9 @@ export default function FundPage() {
                   <p className="text-2xl font-bold"></p>
                   <p>
                     <CounterUp
-                      start={1} 
-                      end={totalFund} 
-                      duration={2000} 
+                      start={1}
+                      end={totalFund}
+                      duration={2000}
                       className="text-[32px] leading-10 font-bold text-[#1F1F41]"
                     />
                   </p>
@@ -139,7 +136,7 @@ export default function FundPage() {
                   <p className="text-2xl font-bold"></p>
                   <p>
                     <CounterUp
-                      end={totalExpense? totalExpense: 0}
+                      end={totalExpense ? totalExpense : 0}
                       className="text-[32px] leading-10 font-bold text-[#1F1F41]"
                     />
                   </p>
@@ -159,6 +156,7 @@ export default function FundPage() {
                 </CardContent>
               </Card>
             </CardContent>
+            <p className="text-sm text-gray-500">*Đơn vị triệu đồng</p>
           </Card>
 
           <Card className="overflow-x-auto xl:w-[1000px] scrollbar-hide">
@@ -253,7 +251,6 @@ export default function FundPage() {
           </CardContent>
         </Card>
       </div>
-
 
     </div>
   );
