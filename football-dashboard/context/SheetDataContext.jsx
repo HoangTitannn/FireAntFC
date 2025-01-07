@@ -6,6 +6,8 @@ const SheetDataContext = createContext();
 export function SheetDataProvider({ children }) {
   const [mainSheetData, setMainSheetData] = useState([]);
   const [sheet2Data, setSheet2Data] = useState([]);
+  const [sheet3Data, setSheet3Data] = useState([]);
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -14,22 +16,26 @@ export function SheetDataProvider({ children }) {
       setLoading(true);
       setError(null);
       
-      const [mainResponse, sheet2Response] = await Promise.all([
+      const [mainResponse, sheet2Response, sheet3Response] = await Promise.all([
         fetch('https://sheetdb.io/api/v1/9xka9p944b096'),
-        fetch('https://sheetdb.io/api/v1/9xka9p944b096?sheet=sheet2')
+        fetch('https://sheetdb.io/api/v1/9xka9p944b096?sheet=sheet2'),
+        fetch('https://sheetdb.io/api/v1/9xka9p944b096?sheet=sheet3')
       ]);
 
-      if (!mainResponse.ok || !sheet2Response.ok) {
+      if (!mainResponse.ok || !sheet2Response.ok || !sheet3Response.ok) {
         throw new Error('Failed to fetch data');
       }
 
-      const [mainData, sheet2Data] = await Promise.all([
+      const [mainData, sheet2Data, sheet3Data] = await Promise.all([
         mainResponse.json(),
-        sheet2Response.json()
+        sheet2Response.json(),
+        sheet3Response.json()
       ]);
 
       setMainSheetData(mainData);
       setSheet2Data(sheet2Data);
+      setSheet3Data(sheet3Data);
+
     } catch (error) {
       setError(error.message);
     } finally {
@@ -40,6 +46,7 @@ export function SheetDataProvider({ children }) {
   const value = {
     mainSheetData,
     sheet2Data,
+    sheet3Data,
     loading,
     error,
     fetchAllSheetData
