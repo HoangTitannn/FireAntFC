@@ -48,7 +48,9 @@ export default function Home() {
       />
       <Card className="w-full max-w-3xl h-[500px] overflow-y-auto scrollbar-hide">
         <CardHeader>
-          <CardTitle className="font-bold text-[#1F1F41]">Thống kê mùa giải 2025</CardTitle>
+          <CardTitle className="font-bold text-[#1F1F41]">
+            Thống kê mùa giải 2025
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="min-w-full">
@@ -60,46 +62,43 @@ export default function Home() {
                   <th className="p-2 text-center font-medium">Bàn thắng</th>
                   <th className="p-2 text-center font-medium">Kiến tạo</th>
                   <th className="p-2 text-center font-medium">Số trận</th>
+                  <th className="p-2 text-center font-medium">Đời sống</th>
+                  <th className="p-2 text-center font-medium">Tổng điểm</th>
                 </tr>
               </thead>
               <tbody>
-                {mainSheetData
-                  .sort(
-                    (a: SheetDataItem, b: SheetDataItem) =>
-                      Number(b.Goals) - Number(a.Goals)
-                  )
-                  .map((item: SheetDataItem, index: number) => (
-                    <tr
-                      key={index}
-                      data-aos="fade-up"
-                      data-aos-offset="0"
-                      data-aos-delay={50 * index}
-                      className={`${
-                        index % 2 === 0 ? "bg-muted" : "bg-background"
-                      } ${index < 3 ? "font-semibold" : ""} ${
-                        index === 0 ? "text-yellow-500" : ""
-                      } ${index === 1 ? "text-red-500" : ""} ${
-                        index === 2 ? "text-amber-600" : ""
-                      }`}>
-                      <td className="p-2 border-t text-center">
-                        {index < 3 ? (
-                          <span className="inline-block w-6 h-6 rounded-full text-center leading-6">
-                            {index + 1}
-                          </span>
-                        ) : (
-                          index + 1
-                        )}
-                      </td>
-                      <td className="p-2 border-t ">{item.Name}</td>
-                      <td className="p-2 border-t text-center">{item.Goals}</td>
-                      <td className="p-2 border-t text-center">
-                        {item.Assists}
-                      </td>
-                      <td className="p-2 border-t text-center">
-                        {item.Appearances}
-                      </td>
-                    </tr>
-                  ))}
+                {mainSheetData.map((item: SheetDataItem, index: number) => (
+                  <tr
+                    key={index}
+                    data-aos="fade-up"
+                    data-aos-offset="0"
+                    data-aos-delay={50 * index}
+                    className={`${
+                      index % 2 === 0 ? "bg-muted" : "bg-background"
+                    } ${index < 3 ? "font-semibold" : ""} ${
+                      index === 0 ? "text-yellow-500" : ""
+                    } ${index === 1 ? "text-red-500" : ""} ${
+                      index === 2 ? "text-amber-600" : ""
+                    }`}>
+                    <td className="p-2 border-t text-center">
+                      {index < 3 ? (
+                        <span className="inline-block w-6 h-6 rounded-full text-center leading-6">
+                          {index + 1}
+                        </span>
+                      ) : (
+                        index + 1
+                      )}
+                    </td>
+                    <td className="p-2 border-t ">{item.Name}</td>
+                    <td className="p-2 border-t text-center">{item.Goals}</td>
+                    <td className="p-2 border-t text-center">{item.Assists}</td>
+                    <td className="p-2 border-t text-center">
+                      {item.Appearances}
+                    </td>
+                    <td className="p-2 border-t text-center">{item.Life}</td>
+                    <td className="p-2 border-t text-center">{item.Total}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
