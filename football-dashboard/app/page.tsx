@@ -46,14 +46,14 @@ export default function Home() {
         alt="logo"
         className="hidden 2xl:block w-[220px] h-auto absolute left-[280px] bottom-0"
       />
-      <Card className="w-full max-w-3xl h-[500px] overflow-y-auto scrollbar-hide">
+      <Card className="w-full sm:max-w-3xl h-[60vh] sm:h-[70vh] overflow-y-auto scrollbar-hide">
         <CardHeader>
           <CardTitle className="font-bold text-[#1F1F41]">
             Thống kê mùa giải 2025
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="min-w-full">
+          <div className="min-w-full overflow-x-auto scrollbar-hide">
             <table className="w-full border-collapse">
               <thead>
                 <tr className=" text-woodsmoke-600">
