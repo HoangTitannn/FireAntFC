@@ -255,3 +255,15 @@ export default function FundPage() {
     </div>
   );
 }
+
+export const metadata = {
+  title: 'Quỹ đội - FireAnt Football Club',
+  description: 'Trang thông tin chi tiết về quỹ đội của FireAnt Football Club.',
+  keywords: ['quỹ đội', 'FireAnt Football Club', 'bóng đá', 'tài chính'],
+  openGraph: {
+    title: 'Quỹ đội - FireAnt Football Club',
+    description: 'Trang thông tin chi tiết về quỹ đội của FireAnt Football Club.',
+    type: 'website',
+    image: '/images/Thumbnail_website.png',
+  },
+};
