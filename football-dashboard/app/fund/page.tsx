@@ -1,4 +1,3 @@
-"use client";
 import { useSheetData } from "@/context/SheetDataContext";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
