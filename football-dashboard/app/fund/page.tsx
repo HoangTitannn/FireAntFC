@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/table";
 import { CheckCircle, XCircle, MinusCircle, Wallet } from "lucide-react";
 import CounterUp from "@/components/ui/counterUp";
-import Head from "next/head";
+// import Head from "next/head";
 
 interface SheetDataItem {
   [key: string]: string | number | boolean;
@@ -106,7 +106,7 @@ export default function FundPage() {
 
   return (
     <>
-      <Head>
+      {/* <Head>
         <title>Quỹ đội - FireAnt Football Club</title>
         <meta name="description" content="Trang thông tin chi tiết về quỹ đội của FireAnt Football Club." />
         <meta name="keywords" content="quỹ đội, FireAnt Football Club, bóng đá, tài chính" />
@@ -114,7 +114,7 @@ export default function FundPage() {
         <meta property="og:description" content="Trang thông tin chi tiết về quỹ đội của FireAnt Football Club." />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="/images/Thumbnail_website.png" />
-      </Head>
+      </Head> */}
       <div className="flex flex-col gap-10 items-center mt-10 p-2 sm:p-6 text-[#1F1F41]">
         <div className="flex gap-10">
           <div className="flex flex-col gap-10">
