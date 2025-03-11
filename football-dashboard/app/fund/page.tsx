@@ -1,3 +1,4 @@
+"use client";
 import { useSheetData } from "@/context/SheetDataContext";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -10,6 +11,7 @@ import {
 } from "@/components/ui/table";
 import { CheckCircle, XCircle, MinusCircle, Wallet } from "lucide-react";
 import CounterUp from "@/components/ui/counterUp";
+import Head from "next/head";
 
 interface SheetDataItem {
   [key: string]: string | number | boolean;
@@ -103,114 +105,155 @@ export default function FundPage() {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div className="flex flex-col gap-10 items-center mt-10 p-2 sm:p-6 text-[#1F1F41]">
-      <div className="flex gap-10">
-        <div className="flex flex-col gap-10">
-          <Card className="p-6 h-fit">
-            <CardHeader className="p-0">
-              <CardTitle className="text-2xl font-bold">
-                FireAnt Football Club
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="flex py-6 px-0 gap-4 justify-center">
-              <Card className="p-4 bg-[#F6F6FF] flex flex-col gap-3" >
-                <CardTitle className="">Tổng quỹ</CardTitle>
-                <CardContent className="flex items-center gap-2">
-                  <Wallet className="text-[#FBBF24] w-7 h-7" />
-                  <p className="text-2xl font-bold"></p>
-                  <p>
-                    <CounterUp
-                      start={1}
-                      end={totalFund}
-                      duration={2000}
-                      className="text-[32px] leading-10 font-bold text-[#1F1F41]"
-                    />
-                  </p>
-                </CardContent>
-              </Card>
-              <Card className="p-4 bg-[#F6F6FF] flex flex-col gap-3">
-                <CardTitle>Tổng chi</CardTitle>
-                <CardContent className="flex items-center gap-2">
-                  <Wallet className="text-[#FBBF24] w-7 h-7" />
-                  <p className="text-2xl font-bold"></p>
-                  <p>
-                    <CounterUp
-                      end={totalExpense ? totalExpense : 0}
-                      className="text-[32px] leading-10 font-bold text-[#1F1F41]"
-                    />
-                  </p>
-                </CardContent>
-              </Card>
-              <Card className="p-4 bg-[#F6F6FF] flex flex-col gap-3">
-                <CardTitle className="">Còn lại</CardTitle>
-                <CardContent className="flex items-center gap-2">
-                  <Wallet className="text-[#FBBF24] w-7 h-7" />
-                  <p className="text-2xl font-bold"></p>
-                  <p>
-                    <CounterUp
-                      end={remainingBalance}
-                      className="text-[32px] leading-10 font-bold "
-                    />
-                  </p>
-                </CardContent>
-              </Card>
-            </CardContent>
-            <p className="text-sm text-gray-500">*Đơn vị triệu đồng</p>
-          </Card>
+    <>
+      <Head>
+        <title>Quỹ đội - FireAnt Football Club</title>
+        <meta name="description" content="Trang thông tin chi tiết về quỹ đội của FireAnt Football Club." />
+        <meta name="keywords" content="quỹ đội, FireAnt Football Club, bóng đá, tài chính" />
+        <meta property="og:title" content="Quỹ đội - FireAnt Football Club" />
+        <meta property="og:description" content="Trang thông tin chi tiết về quỹ đội của FireAnt Football Club." />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="/images/Thumbnail_website.png" />
+      </Head>
+      <div className="flex flex-col gap-10 items-center mt-10 p-2 sm:p-6 text-[#1F1F41]">
+        <div className="flex gap-10">
+          <div className="flex flex-col gap-10">
+            <Card className="p-6 h-fit">
+              <CardHeader className="p-0">
+                <CardTitle className="text-2xl font-bold">
+                  FireAnt Football Club
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="flex py-6 px-0 gap-4 justify-center">
+                <Card className="p-4 bg-[#F6F6FF] flex flex-col gap-3" >
+                  <CardTitle className="">Tổng quỹ</CardTitle>
+                  <CardContent className="flex items-center gap-2">
+                    <Wallet className="text-[#FBBF24] w-7 h-7" />
+                    <p className="text-2xl font-bold"></p>
+                    <p>
+                      <CounterUp
+                        start={1}
+                        end={totalFund}
+                        duration={2000}
+                        className="text-[32px] leading-10 font-bold text-[#1F1F41]"
+                      />
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card className="p-4 bg-[#F6F6FF] flex flex-col gap-3">
+                  <CardTitle>Tổng chi</CardTitle>
+                  <CardContent className="flex items-center gap-2">
+                    <Wallet className="text-[#FBBF24] w-7 h-7" />
+                    <p className="text-2xl font-bold"></p>
+                    <p>
+                      <CounterUp
+                        end={totalExpense ? totalExpense : 0}
+                        className="text-[32px] leading-10 font-bold text-[#1F1F41]"
+                      />
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card className="p-4 bg-[#F6F6FF] flex flex-col gap-3">
+                  <CardTitle className="">Còn lại</CardTitle>
+                  <CardContent className="flex items-center gap-2">
+                    <Wallet className="text-[#FBBF24] w-7 h-7" />
+                    <p className="text-2xl font-bold"></p>
+                    <p>
+                      <CounterUp
+                        end={remainingBalance}
+                        className="text-[32px] leading-10 font-bold "
+                      />
+                    </p>
+                  </CardContent>
+                </Card>
+              </CardContent>
+              <p className="text-sm text-gray-500">*Đơn vị triệu đồng</p>
+            </Card>
 
-          <Card className="overflow-x-auto xl:w-[1000px] scrollbar-hide">
-            <CardHeader className="bg-primary text-primary-foreground">
-              <CardTitle className="text-2xl font-bold text-center">
-                Quỹ đội
+            <Card className="overflow-x-auto xl:w-[1000px] scrollbar-hide">
+              <CardHeader className="bg-primary text-primary-foreground">
+                <CardTitle className="text-2xl font-bold text-center">
+                  Quỹ đội
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="p-0">
+                <div className="overflow-x-auto">
+                  <Table>
+                    <TableHeader>
+                      <TableRow className="bg-muted/50">
+                        <TableHead className="font-bold">Tên</TableHead>
+                        <TableHead className="font-bold text-center">
+                          Tháng 7
+                        </TableHead>
+                        <TableHead className="font-bold text-center">
+                          Tháng 8
+                        </TableHead>
+                        <TableHead className="font-bold text-center">
+                          Tháng 9
+                        </TableHead>
+                        <TableHead className="font-bold text-center">
+                          Tháng 10
+                        </TableHead>
+                        <TableHead className="font-bold text-center">
+                          Tháng 11
+                        </TableHead>
+                        <TableHead className="font-bold text-center">
+                          Tháng 12
+                        </TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {table1.map((row: SheetDataItem, index: number) => (
+                        <TableRow key={index}>
+                          <TableCell className="font-medium">{row.Name}</TableCell>
+                          {[
+                            "July",
+                            "August",
+                            "September",
+                            "October",
+                            "November",
+                            "December",
+                          ].map((month) => {
+                            const status = getPaymentStatus(row[month]);
+                            return (
+                              <TableCell key={month} className="text-center">
+                                <div className="flex items-center justify-center">
+                                  {status.icon}
+                                </div>
+                              </TableCell>
+                            );
+                          })}
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          <Card className="h-fit">
+            <CardHeader>
+              <CardTitle className="text-2xl font-bold">
+                Nội dung chi từ 7-2024
               </CardTitle>
             </CardHeader>
-            <CardContent className="p-0">
+            <CardContent>
               <div className="overflow-x-auto">
                 <Table>
                   <TableHeader>
-                    <TableRow className="bg-muted/50">
-                      <TableHead className="font-bold">Tên</TableHead>
-                      <TableHead className="font-bold text-center">
-                        Tháng 7
-                      </TableHead>
-                      <TableHead className="font-bold text-center">
-                        Tháng 8
-                      </TableHead>
-                      <TableHead className="font-bold text-center">
-                        Tháng 9
-                      </TableHead>
-                      <TableHead className="font-bold text-center">
-                        Tháng 10
-                      </TableHead>
-                      <TableHead className="font-bold text-center">
-                        Tháng 11
-                      </TableHead>
-                      <TableHead className="font-bold text-center">
-                        Tháng 12
-                      </TableHead>
+                    <TableRow>
+                      <TableHead>Ngày</TableHead>
+                      <TableHead>Nội dung chi</TableHead>
+                      <TableHead>Số tiền</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {table1.map((row: SheetDataItem, index: number) => (
+                    {table2.map((row: SheetDataItem, index: number) => (
                       <TableRow key={index}>
-                        <TableCell className="font-medium">{row.Name}</TableCell>
-                        {[
-                          "July",
-                          "August",
-                          "September",
-                          "October",
-                          "November",
-                          "December",
-                        ].map((month) => {
-                          const status = getPaymentStatus(row[month]);
-                          return (
-                            <TableCell key={month} className="text-center">
-                              <div className="flex items-center justify-center">
-                                {status.icon}
-                              </div>
-                            </TableCell>
-                          );
-                        })}
+                        <TableCell>{row.Date}</TableCell>
+                        <TableCell>{row.Description}</TableCell>
+                        <TableCell>{row.Total}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -220,49 +263,7 @@ export default function FundPage() {
           </Card>
         </div>
 
-        <Card className="h-fit">
-          <CardHeader>
-            <CardTitle className="text-2xl font-bold">
-              Nội dung chi từ 7-2024
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="overflow-x-auto">
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Ngày</TableHead>
-                    <TableHead>Nội dung chi</TableHead>
-                    <TableHead>Số tiền</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {table2.map((row: SheetDataItem, index: number) => (
-                    <TableRow key={index}>
-                      <TableCell>{row.Date}</TableCell>
-                      <TableCell>{row.Description}</TableCell>
-                      <TableCell>{row.Total}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </div>
-          </CardContent>
-        </Card>
       </div>
-
-    </div>
+    </>
   );
 }
-
-export const metadata = {
-  title: 'Quỹ đội - FireAnt Football Club',
-  description: 'Trang thông tin chi tiết về quỹ đội của FireAnt Football Club.',
-  keywords: ['quỹ đội', 'FireAnt Football Club', 'bóng đá', 'tài chính'],
-  openGraph: {
-    title: 'Quỹ đội - FireAnt Football Club',
-    description: 'Trang thông tin chi tiết về quỹ đội của FireAnt Football Club.',
-    type: 'website',
-    image: '/images/Thumbnail_website.png',
-  },
-};
